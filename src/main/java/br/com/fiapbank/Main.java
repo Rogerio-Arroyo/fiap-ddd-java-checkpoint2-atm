@@ -27,10 +27,18 @@ public class Main {
         System.out.println();
         System.out.println("Olá, " + cliente.obterPrimeiroNome() + "! Seja bem-vindo(a) ao FIAP Bank.");
 
+        // Solicita tipo de conta (presentation)
+        Integer tipoConta = terminal.solicitarTipoConta();
+
         // Cria conta via Factory (Singleton + Factory)
         ContaFactory factory = ContaFactory.getInstance();
         Dinheiro saldoInicial = new Dinheiro(0.0);
-        Conta conta = factory.criarContaCorrente(cliente, contaAcesso, saldoInicial);
+        Conta conta;
+        if (tipoConta == 1) {
+            conta = factory.criarContaCorrente(cliente, contaAcesso, saldoInicial);
+        } else {
+            conta = factory.criarContaPoupanca(cliente, contaAcesso, saldoInicial);
+        }
 
         // Cria serviços da camada application
         ContaService contaService = new ContaService(conta);

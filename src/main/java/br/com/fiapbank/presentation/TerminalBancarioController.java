@@ -74,6 +74,28 @@ public class TerminalBancarioController {
         return senha;
     }
 
+    public Integer solicitarTipoConta() {
+        System.out.println();
+        System.out.println("--- Tipo de Conta ---");
+        System.out.println("  [ 1 ] Conta Corrente (taxa de R$ 25,00 por saque)");
+        System.out.println("  [ 2 ] Conta Poupança  (rendimento de 1% após cada saque)");
+
+        Integer tipo = 0;
+        while (tipo != 1 && tipo != 2) {
+            System.out.print("Escolha o tipo de conta: ");
+            String entrada = leitor.nextLine().trim();
+            try {
+                tipo = Integer.parseInt(entrada);
+                if (tipo != 1 && tipo != 2) {
+                    System.out.println("Opção inválida! Digite 1 ou 2.");
+                }
+            } catch (Exception e) {
+                System.out.println("Opção inválida! Digite 1 ou 2.");
+            }
+        }
+        return tipo;
+    }
+
     public Boolean realizarAutenticacao() {
         System.out.println();
         System.out.println("--- Autenticação ---");
