@@ -11,10 +11,7 @@ import br.com.fiapbank.model.Dinheiro;
 import br.com.fiapbank.presentation.TerminalBancarioController;
 
 /**
- * Ponto de entrada da aplicação FIAP Bank ATM.
- * Orquestra as camadas DDD: presentation → application → model → infrastructure.
- *
- * Fluxo principal:
+ * Nova funcionalidade para dar mias contexto as classes:
  *   [1] Cadastrar nova conta → salva no ContaRepository
  *   [2] Fazer login → busca no ContaRepository → autentica → abre menu bancário
  *   [3] Sair
