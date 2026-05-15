@@ -34,4 +34,5 @@ src/main/java/
     ├── presentation/
     │   └── TerminalBancarioController.java
     └── infrastructure/
+        └── ContaRepository.java
 ```
