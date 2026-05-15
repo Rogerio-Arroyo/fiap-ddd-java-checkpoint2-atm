@@ -3,6 +3,7 @@ package br.com.fiapbank;
 import br.com.fiapbank.application.AutorizacaoService;
 import br.com.fiapbank.application.ContaFactory;
 import br.com.fiapbank.application.ContaService;
+import br.com.fiapbank.infrastructure.ContaRepository;
 import br.com.fiapbank.model.Cliente;
 import br.com.fiapbank.model.Conta;
 import br.com.fiapbank.model.ContaAcesso;
@@ -39,6 +40,10 @@ public class Main {
         } else {
             conta = factory.criarContaPoupanca(cliente, contaAcesso, saldoInicial);
         }
+
+        // Salva a conta no repositório em memória (infrastructure)
+        ContaRepository repository = new ContaRepository();
+        repository.salvar(conta);
 
         // Cria serviços da camada application
         ContaService contaService = new ContaService(conta);
