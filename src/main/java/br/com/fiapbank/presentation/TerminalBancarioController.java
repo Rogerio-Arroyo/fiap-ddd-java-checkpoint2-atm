@@ -12,12 +12,11 @@ public class TerminalBancarioController {
 
     private ContaService contaService;
     private AutorizacaoService autorizacaoService;
-    private Scanner leitor;
+    private static Scanner leitor = new Scanner(System.in);
 
     public TerminalBancarioController(ContaService contaService, AutorizacaoService autorizacaoService) {
         this.contaService = contaService;
         this.autorizacaoService = autorizacaoService;
-        this.leitor = new Scanner(System.in);
     }
 
     public String solicitarNomeCompleto() {
