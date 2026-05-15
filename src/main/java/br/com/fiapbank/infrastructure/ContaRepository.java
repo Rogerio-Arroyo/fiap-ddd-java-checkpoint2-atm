@@ -32,6 +32,16 @@ public class ContaRepository {
         return null;
     }
 
+    public Conta buscarPorNome(String nomeCompleto) {
+        for (Integer i = 0; i < contas.size(); i++) {
+            Conta conta = contas.get(i);
+            if (conta.getCliente().getNomeCompleto().equalsIgnoreCase(nomeCompleto.trim())) {
+                return conta;
+            }
+        }
+        return null;
+    }
+
     public List<Conta> listarTodas() {
         return this.contas;
     }

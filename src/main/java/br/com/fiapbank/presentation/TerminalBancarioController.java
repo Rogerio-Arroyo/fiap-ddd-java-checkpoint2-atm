@@ -8,6 +8,11 @@ import br.com.fiapbank.model.Movimentacao;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Controlador da camada de apresentação (Presentation Layer - DDD).
+ * Responsável por toda a interação com o usuário via terminal.
+ * Gerencia o fluxo de cadastro, login e operações bancárias.
+ */
 public class TerminalBancarioController {
 
     private ContaService contaService;
@@ -19,10 +24,45 @@ public class TerminalBancarioController {
         this.autorizacaoService = autorizacaoService;
     }
 
+    // =========================================================
+    // MENU INICIAL
+    // =========================================================
+
+    public Integer exibirMenuInicial() {
+        System.out.println();
+        System.out.println("========================================");
+        System.out.println("      BEM-VINDO AO FIAP BANK - ATM");
+        System.out.println("========================================");
+        System.out.println("  [ 1 ] Cadastrar nova conta");
+        System.out.println("  [ 2 ] Fazer login");
+        System.out.println("  [ 3 ] Sair");
+        System.out.println("========================================");
+        System.out.print("Escolha uma opção: ");
+
+        Integer opcao = 0;
+        while (opcao != 1 && opcao != 2 && opcao != 3) {
+            String entrada = leitor.nextLine().trim();
+            try {
+                opcao = Integer.parseInt(entrada);
+                if (opcao != 1 && opcao != 2 && opcao != 3) {
+                    System.out.println("Opção inválida! Digite 1, 2 ou 3.");
+                    System.out.print("Escolha uma opção: ");
+                }
+            } catch (Exception e) {
+                System.out.println("Opção inválida! Digite 1, 2 ou 3.");
+                System.out.print("Escolha uma opção: ");
+            }
+        }
+        return opcao;
+    }
+
+    // =========================================================
+    // CADASTRO
+    // =========================================================
+
     public String solicitarNomeCompleto() {
-        System.out.println("========================================");
-        System.out.println("   BEM-VINDO AO FIAP BANK - ATM");
-        System.out.println("========================================");
+        System.out.println();
+        System.out.println("--- Cadastro de Nova Conta ---");
         String nome = "";
         while (nome.isEmpty()) {
             System.out.print("Digite seu nome completo: ");
@@ -96,6 +136,17 @@ public class TerminalBancarioController {
         return tipo;
     }
 
+    // =========================================================
+    // LOGIN
+    // =========================================================
+
+    public String solicitarLoginNome() {
+        System.out.println();
+        System.out.println("--- Login ---");
+        System.out.print("Digite seu nome completo: ");
+        return leitor.nextLine().trim();
+    }
+
     public Boolean realizarAutenticacao() {
         System.out.println();
         System.out.println("--- Autenticação ---");
@@ -110,20 +161,26 @@ public class TerminalBancarioController {
 
             if (autorizacaoService.isBloqueada()) {
                 System.out.println();
-                System.out.println("ACESSO BLOQUEADO");
+                System.out.println("ACESSO BLOQUEADO: conta bloqueada após 3 tentativas incorretas.");
                 return false;
             }
 
             System.out.println("Senha incorreta! Tentativas restantes: " + autorizacaoService.getTentativasRestantes());
         }
 
+        System.out.println("ACESSO BLOQUEADO: conta bloqueada após 3 tentativas incorretas.");
         return false;
     }
+
+    // =========================================================
+    // MENU BANCÁRIO
+    // =========================================================
 
     public void exibirMenuPrincipal() {
         Integer opcao = 0;
 
         while (opcao != 5) {
+            System.out.println();
             System.out.println("========================================");
             System.out.println("          MENU PRINCIPAL");
             System.out.println("========================================");
@@ -131,7 +188,7 @@ public class TerminalBancarioController {
             System.out.println("  [ 2 ] Fazer Depósito");
             System.out.println("  [ 3 ] Fazer Saque");
             System.out.println("  [ 4 ] Histórico de Movimentações");
-            System.out.println("  [ 5 ] Sair");
+            System.out.println("  [ 5 ] Sair (voltar ao menu inicial)");
             System.out.println("========================================");
             System.out.print("Escolha uma opção: ");
 
@@ -158,7 +215,7 @@ public class TerminalBancarioController {
                     exibirMovimentacoes();
                     break;
                 case 5:
-                    System.out.println("O FIAP Bank agradece sua preferência!");
+                    System.out.println("Sessão encerrada. Até logo!");
                     break;
                 default:
                     System.out.println("Opção inválida! Digite um número de 1 a 5.");
@@ -166,6 +223,10 @@ public class TerminalBancarioController {
             }
         }
     }
+
+    // =========================================================
+    // OPERAÇÕES BANCÁRIAS
+    // =========================================================
 
     public void exibirSaldo() {
         Dinheiro saldo = contaService.obterSaldo();
