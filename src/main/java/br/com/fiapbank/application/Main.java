@@ -1,4 +1,4 @@
-package br.com.fiapbank;
+package br.com.fiapbank.application;
 
 import br.com.fiapbank.application.AutorizacaoService;
 import br.com.fiapbank.application.ContaFactory;

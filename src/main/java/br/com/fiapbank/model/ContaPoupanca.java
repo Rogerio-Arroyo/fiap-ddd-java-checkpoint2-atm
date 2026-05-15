@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class ContaPoupanca extends Conta {
 
-    public static final Double RENDIMENTO_MENSAL = 1.0;
+    private static final Double RENDIMENTO_MENSAL = 1.0;
 
     public ContaPoupanca(Cliente cliente, ContaAcesso contaAcesso, Dinheiro saldo) {
         super(cliente, contaAcesso, saldo, 0.0);

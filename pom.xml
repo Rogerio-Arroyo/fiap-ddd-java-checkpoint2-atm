@@ -16,7 +16,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <main.class>br.com.fiapbank.Main</main.class>
+        <main.class>br.com.fiapbank.application.Main</main.class>
     </properties>
 
     <build>

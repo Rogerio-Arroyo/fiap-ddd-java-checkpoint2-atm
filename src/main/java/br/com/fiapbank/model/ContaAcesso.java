@@ -2,7 +2,7 @@ package br.com.fiapbank.model;
 
 public class ContaAcesso {
 
-    public static final Integer MAXIMO_TENTATIVAS = 3;
+    private static final Integer MAXIMO_TENTATIVAS = 3;
 
     private String senha;
     private Integer tentativas;
