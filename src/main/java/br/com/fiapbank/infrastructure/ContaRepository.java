@@ -8,7 +8,6 @@ import java.util.UUID;
 
 /**
  * Repositório em memória para armazenamento temporário de contas.
- * Simula a camada de persistência de dados (Infrastructure Layer - DDD).
  */
 public class ContaRepository {
 
