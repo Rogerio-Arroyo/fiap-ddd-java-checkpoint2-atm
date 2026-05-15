@@ -36,9 +36,8 @@ public class Main {
 
             opcaoInicial = terminal.exibirMenuInicial();
 
-            // -----------------------------------------------
+
             // OPÇÃO 1 - CADASTRAR NOVA CONTA
-            // -----------------------------------------------
             if (opcaoInicial.equals(1)) {
 
                 // Coleta dados via presentation
@@ -78,9 +77,7 @@ public class Main {
                 System.out.println("Use o login para acessar sua conta.");
             }
 
-            // -----------------------------------------------
             // OPÇÃO 2 - FAZER LOGIN
-            // -----------------------------------------------
             else if (opcaoInicial.equals(2)) {
 
                 // Solicita nome para busca no repositório
@@ -117,9 +114,7 @@ public class Main {
                 terminalLogado.exibirMenuPrincipal();
             }
 
-            // -----------------------------------------------
             // OPÇÃO 3 - SAIR
-            // -----------------------------------------------
             else if (opcaoInicial.equals(3)) {
                 System.out.println();
                 System.out.println("O FIAP Bank agradece sua preferência. Até logo!");
