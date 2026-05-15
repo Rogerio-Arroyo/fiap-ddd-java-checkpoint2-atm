@@ -35,16 +35,3 @@ src/main/java/
     │   └── TerminalBancarioController.java
     └── infrastructure/
 ```
-
-## Como Compilar e Executar
-
-```bash
-mvn clean compile
-mvn exec:java
-```
-
-## Padrões de Projeto Utilizados
-
-- **Template Method** - Saque com regra de taxa específica por tipo de conta
-- **Singleton** - ContaFactory com instância única
-- **Factory** - Criação de ContaCorrente e ContaPoupanca via ContaFactory
