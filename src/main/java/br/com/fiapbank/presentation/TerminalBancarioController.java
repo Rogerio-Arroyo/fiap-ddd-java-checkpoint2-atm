@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Controlador da camada de apresentação (Presentation Layer - DDD).
- * Responsável por toda a interação com o usuário via terminal.
  * Gerencia o fluxo de cadastro, login e operações bancárias.
  */
 public class TerminalBancarioController {
