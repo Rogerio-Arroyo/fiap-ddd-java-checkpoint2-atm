@@ -22,10 +22,7 @@ public class TerminalBancarioController {
         this.autorizacaoService = autorizacaoService;
     }
 
-    // =========================================================
     // MENU INICIAL
-    // =========================================================
-
     public Integer exibirMenuInicial() {
         System.out.println();
         System.out.println("========================================");
@@ -54,10 +51,7 @@ public class TerminalBancarioController {
         return opcao;
     }
 
-    // =========================================================
     // CADASTRO
-    // =========================================================
-
     public String solicitarNomeCompleto() {
         System.out.println();
         System.out.println("--- Cadastro de Nova Conta ---");
@@ -129,10 +123,7 @@ public class TerminalBancarioController {
         return tipo;
     }
 
-    // =========================================================
     // LOGIN
-    // =========================================================
-
     public String solicitarLoginNome() {
         System.out.println();
         System.out.println("--- Login ---");
@@ -165,10 +156,7 @@ public class TerminalBancarioController {
         return false;
     }
 
-    // =========================================================
     // MENU BANCÁRIO
-    // =========================================================
-
     public void exibirMenuPrincipal() {
         Integer opcao = 0;
 
@@ -217,10 +205,7 @@ public class TerminalBancarioController {
         }
     }
 
-    // =========================================================
     // OPERAÇÕES BANCÁRIAS
-    // =========================================================
-
     public void exibirSaldo() {
         Dinheiro saldo = contaService.obterSaldo();
         System.out.println("Seu saldo atual é: " + saldo);
