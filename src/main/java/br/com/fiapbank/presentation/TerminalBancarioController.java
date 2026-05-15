@@ -86,8 +86,9 @@ public class TerminalBancarioController {
         System.out.println("  - Ao menos uma letra maiúscula");
         System.out.println("  - Ao menos uma letra minúscula");
         System.out.println("  - Ao menos um número");
-        System.out.println("  - Ao menos um caractere especial (!@#$%^&*)");
+        System.out.println("  - Ao menos um caracter especial (!@#$%^&*()-_+=?><)");
 
+        String regexSenhaForte = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\\-_+=?><])(?=.*\\d).{8,}$";
         String senha = "";
         Boolean senhaValida = false;
 
@@ -95,22 +96,16 @@ public class TerminalBancarioController {
             System.out.print("Digite sua senha: ");
             senha = leitor.nextLine();
 
-            if (senha.length() < 8) {
-                System.out.println("Senha fraca! Mínimo 8 caracteres.");
-            } else if (!senha.matches(".*[A-Z].*")) {
-                System.out.println("Senha fraca! Falta letra maiúscula.");
-            } else if (!senha.matches(".*[a-z].*")) {
-                System.out.println("Senha fraca! Falta letra minúscula.");
-            } else if (!senha.matches(".*[0-9].*")) {
-                System.out.println("Senha fraca! Falta número.");
-            } else if (!senha.matches(".*[!@#$%^&*()\\-_+=?><].*")) {
-                System.out.println("Senha fraca! Falta caractere especial.");
-            } else {
+            if (senha.matches(regexSenhaForte)) {
                 senhaValida = true;
+            } else {
+                System.out.println("Senha fraca! Tente novamente seguindo os critérios acima.");
+                System.out.println();
             }
         }
 
         System.out.println("Senha cadastrada com sucesso!");
+        System.out.println();
         return senha;
     }
 
